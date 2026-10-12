@@ -16,12 +16,16 @@ class FetchUserStatsOperation: BaseOperation, @unchecked Sendable {
         URL(string: "https://api.5calls.org/v1/users/stats")!
     }
 
-    override func execute() {
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
+    init(config: URLSessionConfiguration = .default) {
+        super.init()
+        session = URLSession(configuration: config)
+    }
 
+    override func execute() {
         let request = buildRequest(forURL: url)
         let task = session.dataTask(with: request) { data, response, error in
+            defer { self.finish() }
+
             if let e = error {
                 self.error = e
             } else {
@@ -37,11 +41,8 @@ class FetchUserStatsOperation: BaseOperation, @unchecked Sendable {
                         // log an continue, not worth crashing over
                         print("Error parsing user stats: \(e.localizedDescription)")
                     }
-                    self.finish()
-
                 default:
                     print("Received HTTP \(http.statusCode) while fetching stats")
-                    self.finish()
                 }
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC5700012F00000100000001 /* FetchUserStatsOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5700022F00000100000001 /* FetchUserStatsOperationTests.swift */; };
 		061B964448DA5CCCC94994E2 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B7C84D8023A9154688796F /* CoreText.framework */; };
 		2258E3332E54E3BF0032F1C5 /* GET-v1-issue-script.json in Resources */ = {isa = PBXBuildFile; fileRef = 2258E3322E54E3BD0032F1C5 /* GET-v1-issue-script.json */; };
 		2258E3342E54E3BF0032F1C5 /* GET-v1-issue-script.json in Resources */ = {isa = PBXBuildFile; fileRef = 2258E3322E54E3BD0032F1C5 /* GET-v1-issue-script.json */; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FC5700022F00000100000001 /* FetchUserStatsOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserStatsOperationTests.swift; sourceTree = "<group>"; };
 		097A879D4BFD5431EF684F89 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2258E3322E54E3BD0032F1C5 /* GET-v1-issue-script.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "GET-v1-issue-script.json"; sourceTree = "<group>"; };
 		2258E3372E54E40A0032F1C5 /* CustomizedScriptsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedScriptsTests.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				D05EDAF52B3282F500FD94BD /* IssueParsingTest.swift */,
 				D0E042652B47D06700D22647 /* IssueTests.swift */,
 				4F3A572D2B598203009D4616 /* LocationSheetTests.swift */,
+				FC5700022F00000100000001 /* FetchUserStatsOperationTests.swift */,
 				D0176E912B33457D0090E6B7 /* ReportParsingTest.swift */,
 				D02FFCE1245F5733003ADA2B /* ScriptCustomizationTests.swift */,
 				4F2178742B488CD70032D592 /* StoreTests.swift */,
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5700012F00000100000001 /* FetchUserStatsOperationTests.swift in Sources */,
 				D0176E922B33457D0090E6B7 /* ReportParsingTest.swift in Sources */,
 				D02FFCE2245F5733003ADA2B /* ScriptCustomizationTests.swift in Sources */,
 				4F3A572E2B598203009D4616 /* LocationSheetTests.swift in Sources */,
