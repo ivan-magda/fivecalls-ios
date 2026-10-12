@@ -190,16 +190,17 @@ struct IssuesList: View {
     }
 
     private var categorizedIssues: [CategorizedIssuesViewModel] {
+        let issues = allIssues
         if isSearching || !showAllIssues {
             // For search results or default view, make fake categories to preserve order and show flat list
-            return allIssues.map { CategorizedIssuesViewModel(category: Category(name: "\($0.id)"), issues: [$0]) }
+            return issues.map { CategorizedIssuesViewModel(category: Category(name: "\($0.id)"), issues: [$0]) }
         }
 
         var result: [CategorizedIssuesViewModel] = []
 
         // Separate state-specific issues into their own category with the state name
-        let stateIssues = allIssues.filter { $0.isStateSpecific }
-        let nonStateIssues = allIssues.filter { !$0.isStateSpecific }
+        let stateIssues = issues.filter { $0.isStateSpecific }
+        let nonStateIssues = issues.filter { !$0.isStateSpecific }
 
         if !stateIssues.isEmpty {
             let stateName = stateIssues.first?.stateNameFromAbbreviation ?? "State"
@@ -224,7 +225,8 @@ struct IssuesList: View {
 
     var body: some View {
         ScrollViewReader { scroll in
-            if isSearching, allIssues.isEmpty {
+            let sections = categorizedIssues
+            if isSearching, sections.isEmpty {
                 VStack {
                     Spacer()
                     Text("No issues found", comment: "IssuesList no results title")
@@ -237,7 +239,7 @@ struct IssuesList: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
-                List(categorizedIssues, selection: $selectedIssue) { section in
+                List(sections, selection: $selectedIssue) { section in
                     Section {
                         ForEach(section.issues) { issue in
                             NavigationLink(value: issue) {
@@ -251,7 +253,7 @@ struct IssuesList: View {
                                 .foregroundStyle(.fivecallsDarkGray)
                         }
                     } footer: {
-                        if section == categorizedIssues.last, !isSearching {
+                        if section == sections.last, !isSearching {
                             Button {
                                 showAllIssues.toggle()
                                 if let issueID = categorizedIssues.first?.issues.first?.id {
